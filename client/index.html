@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Inventory</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4 text-center">Book Inventory</h1>
+
+        <div class="card">
+            <div class="card-header">
+                <h3>Current Inventory</h3>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush" id="inventoryList"></ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3>Today's Statistics</h3>
+            </div>
+            <div class="card-body">
+                <div id="currentDate" class="mb-3"></div>
+                <ul class="list-group list-group-flush" id="dailyStatistics"></ul>
+            </div>
+            <div class="card-footer text-center">
+                <button class="btn btn-secondary" onclick="showPreviousDate()">Previous</button>
+                <button class="btn btn-secondary" onclick="showNextDate()">Next</button>
+            </div>
+        </div>
+
+        <div class="text-center my-4">
+            <button class="btn btn-success" onclick="exportToPDF()">Export to PDF</button>
+        </div>
+
+        <button class="btn btn-primary floating-btn" onclick="openInventoryForm()">+</button>
+    </div>
+
+    <div class="modal fade" id="inventoryModal" tabindex="-1" aria-labelledby="inventoryModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="inventoryModalLabel">Manage Inventory</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="inventoryForm">
+                        <div class="mb-3">
+                            <label for="bookName" class="form-label">Book Name</label>
+                            <select class="form-select" id="bookName" required>
+                                <option value="Beginner">Beginner</option>
+                                <option value="Elementary">Elementary</option>
+                                <option value="Pre-Intermediate">Pre-Intermediate</option>
+                                <option value="Intermediate">Intermediate</option>
+                                <option value="Kids Level 1">Kids Level 1</option>
+                                <option value="Kids Level 2">Kids Level 2</option>
+                                <option value="Kids Level 3">Kids Level 3</option>
+                                <option value="Kids Level 4">Kids Level 4</option>
+                                <option value="Kids Level 5">Kids Level 5</option>
+                                <option value="Kids Level 6">Kids Level 6</option>
+                                <option value="Kids High Level 1">Kids High Level 1</option>
+                                <option value="Kids High Level 2">Kids High Level 2</option>
+                                <option value="Listening Beginner">Listening Beginner</option>
+                                <option value="Listening Elementary">Listening Elementary</option>
+                                <option value="Listening Pre-Intermediate">Listening Pre-Intermediate</option>
+                                <option value="Listening Intermediate">Listening Intermediate</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="quantity" class="form-label">Quantity</label>
+                            <input type="number" class="form-control" id="quantity" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary" data-action="add">Add</button>
+                        <button type="submit" class="btn btn-danger" data-action="sell">Sell</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
